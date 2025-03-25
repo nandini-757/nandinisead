@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Status</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Track Application Status</h2>
+        <% if (application) { %>
+            <p><strong>Status:</strong> <%= application.status %></p>
+            <p><strong>Background Check:</strong> <%= application.backgroundCheck %></p>
+        <% } else { %>
+            <p>No application found.</p>
+        <% } %>
+        <a href="/logout" class="btn btn-link">Logout</a>
+    </div>
+</body>
+</html>

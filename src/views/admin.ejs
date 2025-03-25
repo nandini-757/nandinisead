@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Personal Details</th>
+                    <th>Documents</th>
+                    <th>Status</th>
+                    <th>Background Check</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% applications.forEach(app => { %>
+                    <tr>
+                        <td><%= app._id %></td>
+                        <td><%= app.userId.username %></td>
+                        <td><%= app.personalDetails %></td>
+                        <td><%= app.documents %></td>
+                        <td><%= app.status %></td>
+                        <td><%= app.backgroundCheck %></td>
+                        <td>
+                            <% if (app.status === 'Submitted') { %>
+                                <a href="/verify/<%= app._id %>" class="btn btn-primary">Verify</a>
+                            <% } else if (app.status === 'Verified') { %>
+                                <a href="/approve/<%= app._id %>" class="btn btn-success">Approve</a>
+                                <a href="/reject/<%= app._id %>" class="btn btn-danger">Reject</a>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <a href="/logout" class="btn btn-link">Logout</a>
+    </div>
+</body>
+</html>
